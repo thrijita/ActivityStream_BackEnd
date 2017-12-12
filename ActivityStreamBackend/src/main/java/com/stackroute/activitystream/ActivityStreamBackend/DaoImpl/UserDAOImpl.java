@@ -45,6 +45,7 @@ public class UserDAOImpl implements UserDAO{
 		}
 	}
 	
+	//not implemented -- why?
 	public UserModel findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
@@ -63,7 +64,7 @@ public class UserDAOImpl implements UserDAO{
 		}
 	}
 	
-	
+	//not implemented -- why?
 	public UserModel getuserById(int id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -71,11 +72,13 @@ public class UserDAOImpl implements UserDAO{
 	
 	
 	public List<UserModel> getAllusers() {
+		//why to create new ArrayList??
 		List<UserModel> list=new ArrayList<UserModel>(); 
 		return list=sessionFactory.getCurrentSession().createQuery("from UserModel").list();
 	}
 	
 	
+	//for any delete method, the parameter should be id i.e., primary key.
 	public boolean deleteUser(UserModel user) {
 		try
 		{
@@ -88,7 +91,7 @@ public class UserDAOImpl implements UserDAO{
 		}
 	}
 	
-	
+	//not implemented -- why?
 	public boolean isUserExist(String name) {
 		// TODO Auto-generated method stub
 		return false;
@@ -101,6 +104,7 @@ public class UserDAOImpl implements UserDAO{
 		
 		if(user.getPassword().equals(password))
 		{
+			//remove SOP
 			System.out.println("hello");
 			return true;
 		}
@@ -110,6 +114,7 @@ public class UserDAOImpl implements UserDAO{
 
 
 	public UserModel getuserbyEmail(String email) {
+		//why to delare user??
 		UserModel user;
 		user=(UserModel) sessionFactory.getCurrentSession().get(UserModel.class,email);
 return user;
