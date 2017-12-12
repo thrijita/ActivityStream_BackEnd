@@ -1,0 +1,3 @@
+com\stackroute\activitystream\ActivityStreamBackend\CircleTestCase.class
+com\stackroute\activitystream\ActivityStreamBackend\MessageTestCase.class
+com\stackroute\activitystream\ActivityStreamBackend\UserCircleTestCase.class
