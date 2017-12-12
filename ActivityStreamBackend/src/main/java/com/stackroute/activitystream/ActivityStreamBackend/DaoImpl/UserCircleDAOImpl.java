@@ -17,6 +17,7 @@ import com.stackroute.activitystream.ActivityStreamBackend.Model.UserModel;
 @Repository(value="userCircleDAO")
 @Transactional
 public class UserCircleDAOImpl implements UserCircleDAO {
+	//use private variables/objects
 	@Autowired
 	SessionFactory sessionFactory;
 	@Autowired
@@ -38,6 +39,8 @@ public class UserCircleDAOImpl implements UserCircleDAO {
 	public boolean deleteUserFromCircle(int userCircleId) {
 		try
 		{
+			//is this method is working??
+			//whe 101 is hardcoded?
 			UserCircle userCircle=getuserbyCircleId(101);
 		sessionFactory.getCurrentSession().delete(userCircle);
 		return true;
@@ -48,11 +51,15 @@ public class UserCircleDAOImpl implements UserCircleDAO {
 		}
 	}
 
+	//why this method is not implemented??
 	public List<Circle> getAllParticipantsOfSingleCircle(int circleId) {
 		/*List<UserCircle> showCircleParticipants = sessionFactory.getCurrentSession().createQuery("FROM UserCircle").list();
 		return showCircleParticipants;*/
 		return null;
 	}
+	
+	//what you are expecting from this method??
+	
 
 	public UserCircle getuserbyCircleId(int userCircleId) {
 		// TODO Auto-generated method stub
