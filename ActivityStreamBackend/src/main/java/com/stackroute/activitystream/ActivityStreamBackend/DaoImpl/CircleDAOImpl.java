@@ -18,11 +18,13 @@ import com.stackroute.activitystream.ActivityStreamBackend.Model.UserCircle;
 @Transactional
 @EnableTransactionManagement
 public class CircleDAOImpl implements CircleDAO {
+	//use private variables/objects
 	@Autowired
 	SessionFactory sessionFactory;
 	public boolean createCircle(Circle circle) {
 		try{
 			circle.setCircleDate(new Date());
+			//by default the status should ACTIVE -- where you are setting it?
 			sessionFactory.getCurrentSession().save(circle);
 			return true;
 		}
@@ -47,6 +49,7 @@ public class CircleDAOImpl implements CircleDAO {
 	}
 
 	public List<Circle> getAllCircles() {
+		//why the name showCircle?  
 		List<Circle> showCircle = sessionFactory.getCurrentSession().createQuery("FROM Circle").list();
 		return showCircle;
 	}
