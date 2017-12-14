@@ -23,10 +23,8 @@ import com.stackroute.activitystream.ActivityStreamBackend.Model.UserModel;
 @Transactional
 @EnableTransactionManagement
 public class MessageDAOImpl implements MessageDAO {
-	
-	//use private objects/properties
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	
 
@@ -60,29 +58,24 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	public List<Message> getMessageByCircle(int CircleId) {
-		//why the variable name is showMessage?
 		List<Message> showMessage = sessionFactory.getCurrentSession().createQuery("FROM Message").list();
 		return showMessage;
 	}
 
 	public List<Message> getMessageByUser(String senderEmailId,String receiverEmailId) {
-		//why the variable name is showMessage?
 		List<Message> showMessage = sessionFactory.getCurrentSession().createQuery("FROM Message where((senderEmailId=:id1 and recieverEmailId=:id2) or (senderEmailId=:id2 and recieverEmailId=:id1))").setParameter("id1",senderEmailId).setParameter("id2",receiverEmailId).list();
 		return showMessage;
 	}
 
-	//why this method is required?
+	
 	public Message getMessageByUserEmail(String email) {
-		//whey to declare message and msg?
 		Message message;
-		//what is rs?
 		Message msg=(Message)sessionFactory.getCurrentSession().createQuery("from Message where recieverEmailId=:rs").setParameter("rs", email).list().get(0);
 		 message=(Message) sessionFactory.getCurrentSession().get(Message.class,msg.getMessageId());
 		 return message;
 	}
 
 	private boolean sendMessageToUserInbox(Message message) {
-		//shoud not use new key word
 		Inbox inbox=new Inbox();
 		//i.setCircleId(message.getCircleId());
 		inbox.setMessageData(message.getMessageData());
@@ -102,7 +95,6 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	private boolean sendMessageToUserOutbox(Message message) {
-		//do not use new key word
 		Outbox outbox=new Outbox();
 		outbox.setMessageData(message.getMessageData());
 		outbox.setMessageDate(message.getMessageDate());
@@ -120,7 +112,6 @@ public class MessageDAOImpl implements MessageDAO {
 		}
 	}
 
-	//what is the meaning of this method name?
 	public Outbox getuserbyMessageIdOutbox(int messageId) {
 		// TODO Auto-generated method stub
 		Outbox outbox=(Outbox) sessionFactory.getCurrentSession().get(Outbox.class, messageId);
@@ -128,7 +119,6 @@ public class MessageDAOImpl implements MessageDAO {
 		
 	}
 	
-	//any delete method should take id i.e., primary key as parameter.
 	public boolean deleteSendMessage(Outbox outbox) {
 		
 		try
@@ -148,7 +138,7 @@ public class MessageDAOImpl implements MessageDAO {
 		return inbox;
 		
 	}
-	//any delete method should take id i.e., primary key as parameter.
+	
 	public boolean deleteReceivedMessage(Inbox inbox) {
 		try
 		{

@@ -10,5 +10,5 @@ public interface UserCircleDAO {
 	public boolean addUserToCircle(UserCircle userCircle);
 	public UserCircle getuserbyCircleId(int userCircleId);
 	public boolean deleteUserFromCircle(int userCircleId);
-	public List<Circle> getAllParticipantsOfSingleCircle(int circleId);
+	
 }

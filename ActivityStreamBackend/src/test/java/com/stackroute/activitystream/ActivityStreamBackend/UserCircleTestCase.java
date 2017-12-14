@@ -58,17 +58,9 @@ public class UserCircleTestCase {
 	 public void testDeleteUser() {
 		 //boolean userCircle=userCircleDAO.deleteUserFromCircle(101);
 		 
-		 userCircleDAO.deleteUserFromCircle(10);
+		 userCircleDAO.deleteUserFromCircle(400);
 		 assertNotNull(userCircle);
 	 }
 	
-	/* @Test
-	 public void testForGetAllUsersFromCircle() {
-	List<UserCircle> list=new ArrayList<UserCircle>();
-	 for(UserCircle listdata:list)
-	 {
-		 System.out.println(listdata.getUserName());
-	 }
-	 }*/
-
+	
 }
